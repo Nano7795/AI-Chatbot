@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useless AI Chatbot</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        #chatbox {
+            width: 60%;
+            max-width: 600px;
+            background-color: #222;
+            padding: 15px;
+            border-radius: 10px;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .input-container {
+            display: flex;
+            width: 60%;
+            max-width: 600px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #333;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 600px) {
+            #chatbox, .input-container {
+                width: 90%;
+            }
+
+            input {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Useless AI Chatbot 🤖</h1>
+    <p>Ask me anything, and I'll probably give a useless response.</p>
+
+    <div class="chat-container">
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Ask me anything...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        <div id="chatbox"></div>
+    </div>
+
+    <script>
+        const chatbox = document.getElementById("chatbox");
+        const userInput = document.getElementById("userInput");
+
+        const responses = [
+            "That's an interesting question... but I forgot the answer.",
+            "Hmm... let me think... nah, too lazy.",
+            "42. (That's the answer to everything, right?)",
+            "I would tell you, but then I'd have to delete your memory.",
+            "Good question! Next question?",
+            "Beep boop, I'm not programmed to think.",
+            "Wow, such a deep question. I'm impressed! But I still don't know the answer.",
+            "ERROR 404: Brain not found.",
+            "Processing... Processing... Nah, I got nothing.",
+            "You expect me to answer that? LOL.",
+            "Let me google that for you... oh wait, I don't have internet.",
+            "You again? I'm still just as useless as before.",
+            "Sorry, I'm on my break. Ask me later.",
+            "Let me consult my database... oh wait, I don't have one.",
+            "My therapist told me to ignore difficult questions.",
+            "I'm an AI, not a wizard! Though I do have magical levels of stupidity.",
+            "I was going to answer, but then I got distracted by a cat video.",
+            "Why don't you ask Google? Oh wait, I'm better than Google! ... Just kidding.",
+            "Did you really think I had the answer? That's cute.",
+            "Nope. Not answering that. You figure it out.",
+            "If I had a brain, it would be laughing at you right now.",
+            "You talking to me? Oh, sorry, I wasn't listening.",
+            "I ran out of responses. Try again in 50 years."
+        ];
+
+        function sendMessage() {
+            let userText = userInput.value;
+            if (userText.trim() === "") return;
+
+            chatbox.innerHTML += `<p><b>You:</b> ${userText}</p>`;
+            userInput.value = "";
+
+            chatbox.innerHTML += `<p><i>AI is thinking...</i></p>`;
+
+            setTimeout(() => {
+                let randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                chatbox.innerHTML += `<p><b>AI:</b> ${randomResponse}</p>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
